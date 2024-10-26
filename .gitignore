@@ -1,0 +1,4 @@
+logs/
+infra/terraform/.terraform
+infra/terraform/*.tfstate
+**/__pycache__
