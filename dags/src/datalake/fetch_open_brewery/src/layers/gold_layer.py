@@ -85,7 +85,7 @@ def transform_athena_data(input_data):
         })
 
     gold_data = pd.DataFrame(gold_list[1:])
-    logging.data(f"Here's a sample of the gold data.\n{gold_data.head()}")
+    logging.info(f"Here's a sample of the gold data.\n{gold_data.head()}")
     return gold_data
 
 def main():
