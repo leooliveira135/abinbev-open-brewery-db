@@ -20,6 +20,7 @@ def fetch_brewery_data():
     brewery_list = requests.get(endpoint)
     if brewery_list.status_code == 200:
         result = brewery_list.json()
+        logging.info(f"Brewery data going to be stored in {bronze_bucket_name} bucket")
         load_data_into_bucket(bronze_bucket_name, path, result)
     else:
         logging.info(f"Unable to get data from the following endpoint: {endpoint}")

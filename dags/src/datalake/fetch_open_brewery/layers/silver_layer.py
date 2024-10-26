@@ -9,20 +9,25 @@ from src.datalake.fetch_open_brewery.vars import (
 )
 
 def get_data_from_bronze_layer(bucket_name, path):
+    logging.info(f"Reading data from {bucket_name} bucket")
     s3_hook = S3Hook("airflow-aws")
     s3_object = s3_hook.read_key(bucket_name=bucket_name, key=path)
     json_data = json.loads(s3_object)
     bronze_data = pd.DataFrame(json_data)
+    logging.data(f"Here's a sample of the bronze data.\n{bronze_data.head()}")
     return bronze_data
 
 def get_aws_connection_info():
+    logging.info("Getting data from the airflow-aws connection")
     conn = BaseHook.get_connection('airflow-aws')
     access_key = conn.login
     secret_key = conn.password
     region_name = conn.to_dict()['extra']['region']
+    logging.info("Data from airflow-aws collected successfully")
     return access_key, secret_key, region_name
 
 def create_deltalake_storage_options(access_key, secret_key, region_name):
+    logging.info("Deltalake storage options created successfully")
     return {
         "AWS_REGION":region_name,
         'AWS_ACCESS_KEY_ID': access_key,
