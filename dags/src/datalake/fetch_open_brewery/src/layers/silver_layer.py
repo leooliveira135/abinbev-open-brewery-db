@@ -14,7 +14,7 @@ def get_data_from_bronze_layer(bucket_name, path):
     s3_object = s3_hook.read_key(bucket_name=bucket_name, key=path)
     json_data = json.loads(s3_object)
     bronze_data = pd.DataFrame(json_data)
-    logging.data(f"Here's a sample of the bronze data.\n{bronze_data.head()}")
+    logging.info(f"Here's a sample of the bronze data.\n{bronze_data.head()}")
     return bronze_data
 
 def get_aws_connection_info():
