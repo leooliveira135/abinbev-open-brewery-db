@@ -4,7 +4,7 @@ import pandas as pd
 from deltalake.writer import write_deltalake
 from airflow.hooks.base import BaseHook
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
-from src.datalake.fetch_open_brewery.vars import (
+from dags.src.datalake.fetch_open_brewery.src.vars import (
     path, bronze_bucket_name, s3_path, partition_list
 )
 
