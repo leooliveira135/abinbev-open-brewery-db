@@ -4,7 +4,7 @@ import pandas as pd
 import time
 from airflow.hooks.base import BaseHook
 from deltalake.writer import write_deltalake
-from src.datalake.fetch_open_brewery.vars import (
+from dags.src.datalake.fetch_open_brewery.src.vars import (
     staging_dir, query, gold_path
 )
 
