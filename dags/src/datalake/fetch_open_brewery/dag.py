@@ -3,15 +3,15 @@ from airflow.operators.python import PythonVirtualenvOperator
 from datetime import datetime
 
 def load_bronze_layer():
-    from dags.src.datalake.fetch_open_brewery.src.main import load_bronze_layer
+    from src.datalake.fetch_open_brewery.src.main import load_bronze_layer
     load_bronze_layer()
 
 def load_silver_layer():
-    from dags.src.datalake.fetch_open_brewery.src.main import load_silver_layer
+    from src.datalake.fetch_open_brewery.src.main import load_silver_layer
     load_silver_layer()
 
 def load_gold_layer():
-    from dags.src.datalake.fetch_open_brewery.src.main import load_gold_layer
+    from src.datalake.fetch_open_brewery.src.main import load_gold_layer
     load_gold_layer()
 
 with DAG(
