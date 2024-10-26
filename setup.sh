@@ -6,6 +6,21 @@ chmod 744 *.sh
 #clone github repo into local machine
 git clone https://github.com/leooliveira135/abinbev-open-brewery-db.git
 
+# install terraform into the local environment
+# this process was made for FEDORA linux distribuiton, here's the doc for linux: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+sudo dnf install -y dnf-plugins-core
+sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+sudo dnf -y install terraform
+terraform -help
+
+# install awscli into the local environment
+# this process was made for FEDORA linux distribuiton, here's the doc for linux: https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html
+cd /tmp
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+
 # install docker into the local environment
 # this process was made for FEDORA linux distribuiton, here's the doc for linux: https://docs.docker.com/desktop/install/linux/
 sudo dnf -y install dnf-plugins-core
