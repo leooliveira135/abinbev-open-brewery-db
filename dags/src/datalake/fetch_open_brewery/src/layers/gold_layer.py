@@ -59,9 +59,9 @@ def athena_get_query_results(client, execution_id):
 def has_athena_query_succeeded(client, execution_id):
     state = "RUNNING"
     max_execution = 5
-
-    logging.info(f"Check number {max_execution} if the query has succeeded")
+    
     while max_execution > 0 and state in ["RUNNING", "QUEUED"]:
+        logging.info(f"Check number {max_execution} if the query has succeeded")
         max_execution -= 1
         response = client.get_query_execution(QueryExecutionId=execution_id)
         if ("QueryExecution" in response) and ("Status" in response["QueryExecution"]) and ("State" in response["QueryExecution"]["Status"]):
