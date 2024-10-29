@@ -1,3 +1,65 @@
+"""
+# Gold Layer - Data Aggregation and Reporting Module
+
+The `gold_layer.py` module serves as the final stage in the data processing pipeline for the Open Brewery DB project. 
+Its primary responsibility is to aggregate, transform, and prepare high-quality datasets from the Silver layer for analytical purposes. 
+This module ensures that the data is structured, reliable, and ready for visualization and reporting in business intelligence applications.
+In the Gold layer, data from the Silver layer is subjected to advanced aggregation techniques, enriching the dataset with key performance indicators (KPIs) 
+and summarizing relevant metrics that provide insights into brewery operations. By leveraging robust data transformation processes, this module enhances the dataset's integrity and usability.
+The final output is stored in a specified format, typically within a Delta Lake, which supports scalable analytics and transactional integrity. 
+This ensures that stakeholders can rely on the accuracy and timeliness of the data for decision-making purposes.
+
+## Functions:
+- `create_deltalake_storage_options(access_key, secret_key, region_name)`: 
+  Configures Delta Lake options with AWS credentials.
+
+- `load_data_into_bucket(path, object_data, storage_options)`: 
+  Writes the final dataset into the Gold layer.
+
+- `get_aws_connection_info()`: 
+  Retrieves AWS credentials for accessing Athena.
+
+- `create_athena_client(access_key, secret_key, region_name)`: 
+  Initializes a boto3 client for querying Athena.
+
+- `athena_start_query_execution(client, query, staging_dir)`: 
+  Executes a SQL query in Athena and stores results in S3.
+
+- `athena_get_query_results(client, execution_id)`: 
+  Fetches query results from Athena.
+
+- `has_athena_query_succeeded(client, execution_id)`: 
+  Monitors Athena query status until completion.
+
+- `transform_athena_data(input_data)`: 
+  Transforms Athena query output into a structured DataFrame.
+
+- `main()`: 
+  The entry point for executing the aggregation workflow, coordinating the overall data processing tasks in the Gold layer.
+
+## Modules and Libraries:
+- `pandas`: Utilized for data manipulation, aggregation, and transformation.
+- `logging`: Implements logging to track operation statuses and capture any issues during processing.
+- `json`: Formats aggregated results into JSON for compatibility with various storage solutions.
+- `delta`: The Delta Lake library is used for managing data storage and ensuring transactional integrity.
+
+## Usage:
+- This module is designed to be executed as part of an Apache Airflow DAG within a multi-layered data pipeline, seamlessly integrating with other components of the data architecture.
+- It can also be run independently for testing, validation, and exploratory analysis of the aggregation logic.
+
+## Error Handling:
+- The module includes comprehensive logging mechanisms to capture errors related to data aggregation and storage operations, allowing for easier debugging and operational transparency.
+
+## Raises:
+- `Exception`: Raised if any data aggregation processes fail or if there are issues encountered during data loading.
+- `Exception`: Triggered if the output data fails to be successfully written to the designated storage location.
+
+## Example Workflow:
+1. The `athena_start_query_execution(client, query, staging_dir)` function fetches refined datasets from the Silver layer.
+2. The data undergoes aggregation using Pandas to generate summaries and KPIs that enhance analytical value.
+3. The processed data is stored in the specified location via the `load_data_into_bucket(path, object_data, storage_options)` function.
+4. Comprehensive logs are generated to confirm the success of data aggregation or to document any encountered issues, ensuring reliable operational oversight.
+"""
 import boto3
 import logging
 import pandas as pd
