@@ -1,3 +1,50 @@
+"""
+Silver Layer - Data Processing Script
+
+This module is responsible for transforming and cleaning the raw brewery data 
+stored in the Bronze layer. The Silver layer processes the data to make it 
+suitable for analytical purposes and prepares it for loading into the Gold layer 
+of the data lake. The processed data is stored using Delta Lake to ensure 
+transactional integrity and support scalable analytics.
+
+Functions:
+    - load_data_into_bucket(path, object_data, storage_options, partition_list): 
+        Saves transformed data to the specified Delta Lake table.
+    - get_data_from_bronze_layer(bucket_name, path): 
+        Fetches raw brewery data from the Bronze layer, applies transformations, 
+        and stores the cleaned data in the Silver Delta Lake table.
+    - get_aws_connection_info():
+        Fetches the AWS Airflow connection needed for the Delta Lake storage options.
+    - create_deltalake_storage_options(access_key, secret_key, region_name):
+        Create the Delta Lake storage options by using the AWS user credentials retrived
+         from Airflow connection.
+    - main(): 
+        Entry point for initiating the data processing workflow in the Silver layer.
+
+Modules and Libraries:
+    - pandas: Used for data manipulation and cleaning.
+    - logging: Provides logging capabilities to track the status of operations.
+    - json: For serializing transformed data into JSON format before uploading to Delta Lake.
+    - delta: Delta Lake library for handling data storage and transactions.
+
+Usage:
+    - This script is called by an Apache Airflow DAG as part of a multi-layered data pipeline.
+    - It can also be executed independently for testing and validation purposes.
+
+Error Handling:
+    - Logs and reports if the data transformation fails or if there are issues with writing to Delta Lake.
+
+Raises:
+    - Exception: If data transformation fails or if there are issues with data loading.
+    - Exception: If the transformed data fails to be written to the specified Delta Lake table.
+
+Example Workflow:
+    1. The `transform_brewery_data()` function retrieves raw data from the Bronze layer.
+    2. The data is processed and cleaned using Pandas operations.
+    3. The cleaned data is stored in the Silver Delta Lake table via the `load_transformed_data_into_delta_table()` function.
+    4. Logs are generated to confirm successful data processing or to report any issues.
+
+"""
 import json
 import logging
 import pandas as pd
