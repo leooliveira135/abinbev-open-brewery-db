@@ -16,7 +16,7 @@ def load_gold_layer():
 
 with DAG(
     dag_id="Fetch_Open_Brewery_Data",
-    schedule=None,
+    schedule="5 4 * * *",
     start_date=datetime(2024, 10, 24),
     catchup=False,
     tags=["api", "open_brewery", "bronze_layer"],
