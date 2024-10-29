@@ -39,9 +39,9 @@ Raises:
     - Exception: If the transformed data fails to be written to the specified Delta Lake table.
 
 Example Workflow:
-    1. The `transform_brewery_data()` function retrieves raw data from the Bronze layer.
+    1. The `get_data_from_bronze_layer(bucket_name, path)` function retrieves raw data from the Bronze layer.
     2. The data is processed and cleaned using Pandas operations.
-    3. The cleaned data is stored in the Silver Delta Lake table via the `load_transformed_data_into_delta_table()` function.
+    3. The cleaned data is stored in the Silver Delta Lake table via the `load_data_into_bucket(path, object_data, storage_options, partition_list)` function.
     4. Logs are generated to confirm successful data processing or to report any issues.
 
 """
