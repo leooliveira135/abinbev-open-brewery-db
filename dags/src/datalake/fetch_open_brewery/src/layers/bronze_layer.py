@@ -30,7 +30,7 @@ Raises:
 
 Example Workflow:
     1. The `fetch_brewery_data()` function calls the Open Brewery API to retrieve data.
-    2. If data is successfully retrieved, it is stored in S3 in JSON format via the `load_data_into_bucket()` function.
+    2. If data is successfully retrieved, it is stored in S3 in JSON format via the `load_data_into_bucket(bucket_name, path, object_data)` function.
     3. Logs are generated to confirm successful data loading or to report any issues.
 """
 
