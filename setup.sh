@@ -1,5 +1,7 @@
 #!/bin/bash
 
+project_path = '/home/oliveiraleo135/Documentos/github/abinbev-open-brewery-db'
+
 # enable the sh files to be run
 chmod 744 *.sh
 
@@ -9,6 +11,10 @@ sudo dnf install -y dnf-plugins-core
 sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 sudo dnf -y install terraform
 terraform -help
+cd $project_path
+terraform init
+terraform plan
+terraform apply
 
 # install awscli into the local environment
 # this process was made for FEDORA linux distribuiton, here's the doc for linux: https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html
@@ -28,7 +34,7 @@ sudo docker run hello-world
 
 # fetch the YAML docker compose file for apache airflow
 # here's the link for the airflow's documentation used in this process: https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html
-cd 
+cd $project_path
 curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.10.2/docker-compose.yaml'
 
 # now setting up the user airflow and updating the docker image into the environment
