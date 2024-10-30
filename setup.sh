@@ -1,6 +1,6 @@
 #!/bin/bash
 
-project_path = '/home/oliveiraleo135/Documentos/github/abinbev-open-brewery-db'
+project_path='/home/oliveiraleo135/Documentos/github/abinbev-open-brewery-db'
 
 # enable the sh files to be run
 chmod 744 *.sh
