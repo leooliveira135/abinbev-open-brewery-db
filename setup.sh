@@ -10,7 +10,7 @@ chmod 744 *.sh
 sudo dnf install -y dnf-plugins-core
 sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
 sudo dnf -y install terraform
-terraform -help
+terraform --help
 cd $project_path
 terraform init
 terraform plan
@@ -18,17 +18,17 @@ terraform apply
 
 # install awscli into the local environment
 # this process was made for FEDORA linux distribuiton, here's the doc for linux: https://docs.aws.amazon.com/pt_br/cli/latest/userguide/getting-started-install.html
-cd /tmp
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
-aws --version
+#cd /tmp
+#curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+#unzip awscliv2.zip
+#sudo ./aws/install
+#aws --version
 
 # install docker into the local environment
 # this process was made for FEDORA linux distribuiton, here's the doc for linux: https://docs.docker.com/desktop/install/linux/
 sudo dnf -y install dnf-plugins-core
 sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl start docker
 sudo docker run hello-world
 
