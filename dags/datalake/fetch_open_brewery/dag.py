@@ -14,7 +14,7 @@ def load_bronze_layer():
     Raises:
         Exception: If data loading fails at the Bronze layer.
     """
-    from src.datalake.fetch_open_brewery.src.main import load_bronze_layer
+    from datalake.fetch_open_brewery.src.main import load_bronze_layer
     load_bronze_layer()
 
 def load_silver_layer():    
@@ -29,7 +29,7 @@ def load_silver_layer():
     Raises:
         Exception: If data transformation or loading fails at the Silver layer.
     """
-    from src.datalake.fetch_open_brewery.src.main import load_silver_layer
+    from datalake.fetch_open_brewery.src.main import load_silver_layer
     load_silver_layer()
 
 def load_gold_layer():
@@ -45,7 +45,7 @@ def load_gold_layer():
     Raises:
         Exception: If final data processing or loading fails at the Gold layer.
     """
-    from src.datalake.fetch_open_brewery.src.main import load_gold_layer
+    from datalake.fetch_open_brewery.src.main import load_gold_layer
     load_gold_layer()
 
 with DAG(

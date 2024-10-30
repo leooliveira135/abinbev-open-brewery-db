@@ -28,6 +28,7 @@ sudo docker run hello-world
 
 # fetch the YAML docker compose file for apache airflow
 # here's the link for the airflow's documentation used in this process: https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html
+cd 
 curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.10.2/docker-compose.yaml'
 
 # now setting up the user airflow and updating the docker image into the environment

@@ -38,7 +38,7 @@ import requests
 import logging
 import json
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
-from src.datalake.fetch_open_brewery.src.vars import (
+from datalake.fetch_open_brewery.src.vars import (
     endpoint, bronze_bucket_name, path
 )
 
