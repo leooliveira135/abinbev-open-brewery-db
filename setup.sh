@@ -3,9 +3,6 @@
 # enable the sh files to be run
 chmod 744 *.sh
 
-#clone github repo into local machine
-git clone https://github.com/leooliveira135/abinbev-open-brewery-db.git
-
 # install terraform into the local environment
 # this process was made for FEDORA linux distribuiton, here's the doc for linux: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 sudo dnf install -y dnf-plugins-core
